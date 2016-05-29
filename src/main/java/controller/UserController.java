@@ -1,23 +1,16 @@
-package WebController;
+package controller;
 
-import Domain.HostRe;
-import Service.CentralProcessor;
-import Service.Rest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import service.Rest;
 
 
 @Controller
 @EnableWebMvc
-public class HelloController {
-    @Autowired
-    HostRe hostRe;
-    @Autowired
-    CentralProcessor processor;
+public class UserController {
 
     @RequestMapping(value = "/")
     @ResponseBody
@@ -25,11 +18,11 @@ public class HelloController {
         return new Rest();
     }
 
-    @RequestMapping(value = "/hosts", method = RequestMethod.GET)
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
     @ResponseBody
     public Rest getAllHosts() {
         Rest odp = new Rest();
-        odp.setResult(processor.listHostsOfGroup(1));
+        odp.setResult("Abra kadabra");
         return odp;
     }
 
